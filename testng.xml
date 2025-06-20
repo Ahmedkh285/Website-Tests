@@ -3,7 +3,7 @@
 <suite name="AutomationExercise Suite">
   <test name="Login and Delete Test">
     <classes>
-      <class name="pages.FullTest"/>
+      <class name="tests.FullTest"/>
     </classes>
   </test>
 </suite>

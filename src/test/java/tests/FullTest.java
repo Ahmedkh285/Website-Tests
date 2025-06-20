@@ -1,10 +1,13 @@
-package pages;
+package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import models.SignupData;
+import pages.*;
+
+import java.sql.Driver;
 import java.util.UUID;
 public class FullTest {
         public String generateRandomEmail() {
@@ -139,6 +142,8 @@ public class FullTest {
         loginPage.login(email,data.password);
         //verify that deleted account unable to login again.
     }
+
+
 
 
 }
