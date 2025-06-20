@@ -46,8 +46,7 @@ public class SignUpPageAfterClick {
     private By createAccountButton = By.xpath("//button[contains(text(),'Create Account')]");
 
     // Verification (Optional)
-    private By continueButton = By.xpath("//a[@data-qa='continue-button']");
-    private By accountCreatedHeader = By.xpath("//h2[@data-qa='account-created']");
+
 
     public void completeSignupForm(SignupData data) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(titleMrRadio)).click();
@@ -71,21 +70,14 @@ public class SignUpPageAfterClick {
         driver.findElement(zipcodeField).sendKeys(data.zipcode);
         driver.findElement(mobileNumberField).sendKeys(data.mobile);
 
+
+
+    }
+    public AccountCreated clickCrateAccount() {
+
         driver.findElement(createAccountButton).click();
+        return new AccountCreated(driver);
 
     }
-
-    public boolean isAccountCreatedVisible() {
-
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(accountCreatedHeader)).isDisplayed();
-
-
-    }
-    public void clickCountinue(){
-
-        driver.findElement(continueButton).click();
-    }
-
-
 
 }

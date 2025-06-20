@@ -24,8 +24,9 @@ public class DeleteAccountPage {
         WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(accountDeletedText));
         return message.isDisplayed();
     }
-    public void clickContinue(){
+    public HomePage clickContinue(){
 
         driver.findElement(continueAfterDeleteButton).click();
+        return new HomePage(driver);
     }
 }

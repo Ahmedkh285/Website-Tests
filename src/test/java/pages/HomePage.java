@@ -32,13 +32,16 @@ public class HomePage {
         return userText.getText().contains(username);
     }
 
-    public void clickDeleteAccount() {
+    public DeleteAccountPage clickDeleteAccount() {
         wait.until(ExpectedConditions.elementToBeClickable(deleteAccountButton)).click();
+        return new DeleteAccountPage(driver);
     }
     public void clickLogOut() {
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
     }
-    public void clickLoginOrSignUp() {
+    public SignUpOrLoginPage clickLoginOrSignUp() {
         wait.until(ExpectedConditions.elementToBeClickable(loginOrSignUp)).click();
+        return new SignUpOrLoginPage(driver);
+
     }
 }
