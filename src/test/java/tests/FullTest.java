@@ -143,7 +143,9 @@ public class FullTest {
         //verify that deleted account unable to login again.
     }
 
-
-
+    @AfterClass
+    public void tearDown() {
+        driver.quit();
+    }
 
 }
