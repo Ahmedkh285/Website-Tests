@@ -1,14 +1,14 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.testng.Assert;
 import org.testng.annotations.*;
 import models.SignupData;
+import setup.Setup;
 import pages.*;
 
 import java.util.UUID;
-public class SignUpTest {
+public class SignUpTest extends Setup {
     public String generateRandomEmail() {
         String uuid = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
         return "user_" + uuid + "@testmail.com";
@@ -19,33 +19,25 @@ public class SignUpTest {
 
 
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private final String baseUrl = "https://www.automationexercise.com";
+
     private final String email =generateRandomEmail();
 
 
     private final String username = "ahmed khalaf";
 
 
-    @BeforeClass
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+
 
     @Test
     public void signuptest() {
-        driver.get(baseUrl);
 
-        HomePage initialHomePage = new HomePage(driver);
-        Assert.assertTrue(initialHomePage.CheckHomePageIsVisible());
+
+
+        Assert.assertTrue(homePage.CheckHomePageIsVisible());
         //check home page is visable.
 
 
 
-        homePage=new HomePage(driver);
         SignUpOrLoginPage signUpOrLoginPage = homePage.clickLoginOrSignUp();
         //to navigate to login or signup page.
 
@@ -95,10 +87,6 @@ public class SignUpTest {
 
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-        //finish test
-    }
+
 
 }

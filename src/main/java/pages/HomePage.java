@@ -22,6 +22,8 @@ public class HomePage {
     private By deleteAccountButton = By.xpath("//a[@href='/delete_account']");
     private By logoutButton = By.xpath("//a[@href='/logout' and contains(text(),'Logout')]");
     private By loginOrSignUp=By.xpath("//a[contains(text(),'Signup / Login')]");
+    private By testCasesButton = By.xpath("//a[@href='/test_cases' and contains(text(),'Test Cases')]");
+    private By productsButton = By.xpath("//a[@href='/products' and contains(text(),'Products')]");
     public boolean CheckHomePageIsVisible() {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(homePageIdent));
         return wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
@@ -42,6 +44,16 @@ public class HomePage {
     public SignUpOrLoginPage clickLoginOrSignUp() {
         wait.until(ExpectedConditions.elementToBeClickable(loginOrSignUp)).click();
         return new SignUpOrLoginPage(driver);
+
+    }
+    public TestCasesPage clickTestCases() {
+        wait.until(ExpectedConditions.elementToBeClickable(testCasesButton)).click();
+        return new TestCasesPage(driver);
+
+    }
+    public AllProductsPage clickProductsButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(productsButton)).click();
+        return new AllProductsPage(driver);
 
     }
 }

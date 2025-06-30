@@ -28,10 +28,20 @@ public class SignUpOrLoginPage {
     private By loginemailInput = By.xpath("//input[@data-qa='login-email']");
     private By passwordInput = By.xpath("//input[@data-qa='login-password']");
     private By loginButton = By.xpath("//button[@data-qa='login-button']");
+    private By signupFormHeader =  By.cssSelector("div[class='signup-form'] > h2");
+    private By emailAlreadyExistsMessage = By.xpath("//p[contains(text(),'Email Address already exist!')]");
 
     public boolean isSignUpFormVisible() {
         WebElement form = wait.until(ExpectedConditions.visibilityOfElementLocated(signupform));
         return form.isDisplayed();
+    }
+    public String isNewUserSignupVisible() {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(signupFormHeader));
+        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+    }
+    public String emailAlreadyExistMessage() {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(emailAlreadyExistsMessage));
+        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
     }
 
     public void signup(String name, String email) {

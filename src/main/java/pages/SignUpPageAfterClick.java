@@ -1,6 +1,5 @@
 package pages;
 import models.SignupData;
-import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

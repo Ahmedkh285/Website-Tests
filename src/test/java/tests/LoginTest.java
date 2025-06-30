@@ -1,13 +1,14 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.aventstack.extentreports.Status;
 import org.testng.Assert;
-import org.testng.annotations.*;
-import pages.*;
+import org.testng.annotations.Test;
+import pages.DeleteAccountPage;
+import pages.SignUpOrLoginPage;
+import setup.Setup;
+import utils.provider.ExcelDataProvider;
 
-import java.util.UUID;
-public class LoginTest {
+public class LoginTest extends Setup {
 
     //i created this function to generate random emails every time.
 
@@ -15,30 +16,19 @@ public class LoginTest {
 
 
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private final String baseUrl = "https://www.automationexercise.com";
+
+//    private final String baseUrl = "https://www.automationexercise.com";
     //private final String email =generateRandomEmail();
 
 
-    private final String email = "ahmedkhalaf1233@yahoo.com";
-    private final String password = "12345";
-    private final String username = "ahmed khalaf";
+//    private final String email = "ahmedkhalaf1813@yahoo.com";
+//    private final String password = "12345";
+//    private final String username = "ahmed khalaf";
 
-    @BeforeClass
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
 
-    @Test
-    public void logintest() {
-        driver.get(baseUrl);
-
-        HomePage initialHomePage = new HomePage(driver);
-        Assert.assertTrue(initialHomePage.CheckHomePageIsVisible());
-        homePage=new HomePage(driver);
+    @Test(dataProviderClass = ExcelDataProvider.class, dataProvider = "logintest")
+    public void logintest(String email, String password, String username) {
+        Assert.assertTrue(homePage.CheckHomePageIsVisible());
         SignUpOrLoginPage signUpOrLoginPage = homePage.clickLoginOrSignUp();
         Assert.assertTrue(signUpOrLoginPage.isSignUpFormVisible());
         signUpOrLoginPage.login(email, password);
@@ -53,10 +43,6 @@ public class LoginTest {
 
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-        //finish test
-    }
+
 
 }
