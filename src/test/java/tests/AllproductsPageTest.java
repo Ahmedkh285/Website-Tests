@@ -30,17 +30,7 @@ public class AllproductsPageTest extends Setup {
             test.log(Status.FAIL,e.getCause() + e.getMessage());
         }
 
-//        try{
-//            Assert.assertTrue(allProductsPage.verifyViewProductsButtonIsVisible());
-//            test.log(Status.PASS,"View Products Button Is Visible");
-//        }catch (Exception e){
-//            test.log(Status.FAIL,e.getCause() + e.getMessage());
-//        }
-
-
         ViewProductPage viewProductPage = allProductsPage.clickViewProductButton();
-
-
 
         try{
             Assert.assertEquals(viewProductPage.verifyProductName(),"Blue Top");
