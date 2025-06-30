@@ -18,7 +18,7 @@ public class Setup {
     protected static ExtentReports extent;
     protected static ExtentSparkReporter htmlReporter;
     protected ExtentTest test;
-//        protected static ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
+
 
 
     @BeforeSuite
@@ -30,14 +30,12 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-//        System.setProperty("webdriver.chrome.driver", "resources/webdriver/chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--ignore-ssl-errors=yes");
-//        chromeOptions.addExtensions(new File("resources/extensions/AdBlock — best ad blocker 5.18.0.0.crx"));
         driver = new ChromeDriver(chromeOptions);
         goHome();
-//        closeLastOpenedTab();
+
     }
 
     public void goHome() {
@@ -50,15 +48,7 @@ public class Setup {
     public void startTest(Method method){
         test = extent.createTest(method.getName());
     }
-//
-//    public void closeLastOpenedTab() {
-//        List<String> allWindowHandles = new ArrayList<>(driver.getWindowHandles());
-//        String lastWindowHandle = allWindowHandles.get(allWindowHandles.size() - 1);
-//        driver.switchTo().window(lastWindowHandle);
-//        driver.close();
-//        String originalWindowHandle = allWindowHandles.get(0);
-//        driver.switchTo().window(originalWindowHandle);
-//    }
+
 
     @AfterClass
     public void tearDown() {
@@ -70,7 +60,5 @@ public class Setup {
         extent.flush();
     }
 
-//    public ExtentTest extentTest() {
-//        return extentTestThreadLocal.get();
-//    }
+
 }
