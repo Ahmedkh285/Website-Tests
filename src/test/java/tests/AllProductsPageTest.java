@@ -4,11 +4,10 @@ import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AllProductsPage;
-import pages.TestCasesPage;
 import pages.ViewProductPage;
 import setup.Setup;
 
-public class AllproductsPageTest extends Setup {
+public class AllProductsPageTest extends Setup {
 
 
 
